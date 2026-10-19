@@ -152,7 +152,33 @@
     metricForm.reset();
     inputBayId.focus();
 
-  });
+    });
+
+    // Delete indivisual sensor records
+    recordsList.addEventListener("click", function (event){
+        const target=event.target;
+
+        if (target.classList.contains("btn-delete")) {
+            const recordId = target.dataset.id;
+
+            //remove matching record
+            records = records.filter(function (record){
+                return record.id !== recordId;
+            });
+            saveRecords();
+            render();
+        }
+    });
+
+    // Clear all logs
+    btnClearAll.addEventListener("click", () =>{
+        if (records.length === 0) return;
+        if (confirm("Are you aure you want to clear all log data")) {
+            records = [];
+            saveRecords;
+            render();
+        }
+    });
 
   function render(){
     //update log count
