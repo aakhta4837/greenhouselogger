@@ -14,7 +14,7 @@
           <h1>Greenhouse Sensor Logger <span class="brand-sub">smart monitoring</span></h1>
         </div>
         <div class="header-status">
-          Active Log: <span id="log-count" class="badge-count">0</span>
+          Active Log: <span id="queue-count" class="badge-count">0</span>
         </div>
       </div>
     </header>
@@ -119,8 +119,21 @@
 
              </form>
          </aside>
-         
-
+         <!-- Log queue output-->
+          <section class="panel records-panel">
+            <div class="records-header">
+                <h2 class="panel-title">Log Queue</h2>
+                <button id="btn-clear-all" class="btn btn-outline-danger btn-sm">
+                Clear Queue
+                </button>
+             </div>
+<!-- Log cards-->
+             <div id="empty-state" class="empty-state"> 
+                <span class="empty-icon">📋</span>
+                <p>No sensor metrics logged</p>
+             </div>
+             <ul id="records-list" class="records-grid" aria-live="polite"></ul>
+          </section>
     </main>
 
     <footer> </footer>
