@@ -23,7 +23,28 @@
     // initialize records and display stored data
     let records = loadRecords();
     render();
-    
+
+    // read operation
+    function loadRecords() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const parsed = stored ? JSON.parse(stored) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+        console.error("Failed to load greenhouse records:", error);
+        return [];
+      }
+    }
+
+    //write operation
+    function saveRecords() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      } catch (error) {
+        console.error("Failed to save greenhouse records:", error);
+      }
+    }
+
 
 
 })();
