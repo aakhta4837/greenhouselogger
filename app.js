@@ -175,7 +175,7 @@
         if (records.length === 0) return;
         if (confirm("Are you aure you want to clear all log data")) {
             records = [];
-            saveRecords;
+            saveRecords();
             render();
         }
     });
