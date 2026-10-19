@@ -13,4 +13,17 @@
     const emptyState = document.getElementById("empty-state");
     const btnClearAll = document.getElementById("btn-clear-all");
 
+    //input fields
+    const inputBayId = document.getElementById("bay-id");
+    const inputPh = document.getElementById("ph");
+    const inputEc = document.getElementById("ec");
+    const inputTemperature = document.getElementById("temperature");
+    const inputHumidity = document.getElementById("humidity");
+
+    // initialize records and display stored data
+    let records = loadRecords();
+    render();
+    
+
+
 })();
