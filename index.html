@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenhouse Sensor Logger</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="portal-header">
@@ -59,6 +59,7 @@
                         class="form-control"
                         min="0"
                         max="14"
+                        step="0.1"
                         placeholder="6.0"
                         required
                         />
@@ -73,6 +74,7 @@
                 class="form-control"
                 min="0"
                 max="10"
+                step="0.1"
                 placeholder="3.0"
                 required
               />
@@ -88,7 +90,7 @@
                 name="temperature"
                 id="temperature"
                 class="form-control"
-                min="0"
+                min="-10"
                 max="200"
                 step="0.1"
                 placeholder="70"
@@ -135,8 +137,12 @@
              <ul id="records-list" class="records-grid" aria-live="polite"></ul>
           </section>
     </main>
-
-    <footer> </footer>
+<!-- Footer section-->
+    <footer class="portal-footer">
+        <p>&copy; 2026 Greenhouse Sensor Logger </p>
+    </footer>
+    <!-- link javascript-->
+     <script src="app.js"></script>
     
 </body>
 </html>
