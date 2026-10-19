@@ -154,6 +154,104 @@
 
   });
 
+  function render(){
+    //update log count
+    queueCount.textContent = records.length;
+
+    //if empty, then empty state
+    if (records.length === 0) {
+      emptyState.classList.remove("hidden");
+      recordsList.innerHTML = "";
+      return;
+    }
+
+    //hide empty state if records exist
+    emptyState.classList.add("hidden");
+
+    // doc fragment for dynamic cards
+    const fragment = document.createDocumentFragment();
+
+    records.forEach(function (rec) {
+        const li = document.createElement("li");
+        li.className = "metric-card status-" +rec.status.level;
+
+        //html for sensor data card
+        li.innerHTML = `
+          <div class="card-top">
+            <div>
+              <div class="bay-id-text">${escapeHtml(rec.bayID)}</div>
+
+              <div class="timestamp">Logged at ${rec.timestamp}</div>
+
+              <span class="risk-badge ${rec.status.level}">
+                ${rec.status.label}
+              </span>
+            </div>
+          </div>
+
+          <div class="sensor-stats"> 
+            <div class="stat-item">
+                <span>pH Level</span>
+                ${rec.ph}
+            </div> 
+
+            <div class="stat-item">
+                <span>Electrical Conductivity</span>
+                ${rec.ec}
+            </div> 
+
+            <div class="stat-item">
+                <span>Air Temperature</span>
+                ${rec.temperature} F
+            </div> 
+
+            <div class="stat-item">
+                <span>Relative Humidity</span>
+                ${rec.humidity}
+            </div> 
+          </div>
+
+          <button 
+          type="button"
+          class="btn btn-outline-danger btn-sm btn-delete"
+          data-id="${rec.id}"
+          >
+          Delete Log
+          </button>
+          `;
+
+          //add card to fragment
+          fragment.appendChild(li);
+        });
+
+        //clear existing records and insert new card
+        recordsList.innerHTML = "";
+        recordsList.appendChild(fragment);
+    }
+
+    // Show form validation errors
+  function displayError(message) {
+    errorBanner.textContent = message;
+    errorBanner.classList.remove("hidden");
+  }
+
+  // Hide form validation errors
+  function hideError() {
+    errorBanner.textContent = "";
+    errorBanner.classList.add("hidden");
+  }
+
+
+// Escape user input to prevent HTML injection
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
 
 
 
