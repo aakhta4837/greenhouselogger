@@ -209,7 +209,7 @@
 
               <div class="timestamp">Logged at ${rec.timestamp}</div>
 
-              <span class="risk-badge ${rec.status.level}">
+              <span class="status-badge ${rec.status.level}">
                 ${rec.status.label}
               </span>
             </div>
@@ -223,7 +223,7 @@
 
             <div class="stat-item">
                 <span>Electrical Conductivity</span>
-                ${rec.ec}
+                ${rec.ec} mS/cm
             </div> 
 
             <div class="stat-item">
@@ -233,7 +233,7 @@
 
             <div class="stat-item">
                 <span>Relative Humidity</span>
-                ${rec.humidity}
+                ${rec.humidity}%
             </div> 
           </div>
 
